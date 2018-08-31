@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h3>ADD</h3>
+
+  <ion-item>
+    <ion-input [(ngModel)]="taskinput" placeholder='Input here' type='text'></ion-input>
+  </ion-item>
+
+
+  <button ion-button full *ngIf="!status" (click) = "addlist()" >ADD</button>
+  <button ion-button full *ngIf="status" (click) = "update()">UPDATE</button>
+  <h3>TODO LIST</h3>
+  <ion-list>
+    <ion-item-sliding *ngFor ="let items of crudelist">
+      <ion-item>
+        {{items}}
+        <button ion-button color='danger' full (click) = "delete(items)">Remove </button>
+        <button ion-button color='secondary' full (click) = "edit(items)">edit </button>
+      </ion-item>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
